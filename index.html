@@ -1,0 +1,627 @@
+<!DOCTYPE	html>
+<html	lang="en">
+<head>
+<meta	charset="UTF-8">
+<meta	name="viewport"	content="width=device-width,	initial-scale=1.0">
+<title>Karthikeyan	Rajkumar	—	Data	Analyst</title>
+<link	rel="preconnect"	href="https://fonts.googleapis.com">
+<link	href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap"	rel="stylesheet">
+<style>
+		:root{
+				--bg:#0B1420;
+				--bg-panel:#101C2C;
+				--line:#1E2E42;
+				--line-soft:#17273A;
+				--text:#FFFFFF;
+				--text-dim:#8CA0B8;
+				--text-faint:#5A7089;
+				--accent:#4FD1C5;
+				--accent-soft:rgba(79,209,197,0.12);
+				--amber:#E8B368;
+				--rose:#E8798A;
+				--font-display:'Sora',	sans-serif;
+				--font-body:'Manrope',	sans-serif;
+				--font-mono:'IBM	Plex	Mono',	monospace;
+		}
+		*{margin:0;padding:0;box-sizing:border-box;}
+		html{scroll-behavior:smooth;}
+		body{
+				background:var(--bg);
+				color:var(--text);
+				font-family:var(--font-body);
+				line-height:1.6;
+				overflow-x:hidden;
+		}
+		@media	(prefers-reduced-motion:	reduce){
+				*{animation-duration:0.001ms	!important;	animation-iteration-count:1	!important;	transition-duration:0.001ms	!important;	scroll-behavior:auto	!important;}
+		}
+		/*	background	grid	texture	*/
+		.grid-bg{
+				position:fixed;	inset:0;	z-index:0;	pointer-events:none;
+				background-image:
+						linear-gradient(var(--line-soft)	1px,	transparent	1px),
+						linear-gradient(90deg,	var(--line-soft)	1px,	transparent	1px);
+				background-size:64px	64px;
+				opacity:0.5;
+				mask-image:	radial-gradient(ellipse	80%	60%	at	50%	0%,	black	30%,	transparent	90%);
+		}
+		a{color:inherit;	text-decoration:none;}
+		::selection{background:var(--accent);	color:#06120F;}
+		a:focus-visible,	button:focus-visible,	input:focus-visible,	textarea:focus-visible{
+				outline:2px	solid	var(--accent);	outline-offset:3px;
+		}
+		.wrap{max-width:1080px;	margin:0	auto;	padding:0	32px;	position:relative;	z-index:1;}
+		@media	(max-width:640px){	.wrap{padding:0	20px;}	}
+		/*	NAV	*/
+		nav{
+				position:sticky;	top:0;	z-index:50;
+				background:rgba(11,20,32,0.85);
+				backdrop-filter:blur(10px);
+				border-bottom:1px	solid	var(--line);
+		}
+		nav	.wrap{display:flex;	align-items:center;	justify-content:space-between;	height:64px;}
+		.nav-mark{font-family:var(--font-mono);	font-size:14px;	color:var(--accent);	letter-spacing:0.02em;}
+		.nav-links{display:flex;	gap:28px;	font-size:14px;	color:var(--text-dim);}
+		.nav-links	a{transition:color	.2s;}
+		.nav-links	a:hover{color:var(--text);}
+		@media	(max-width:700px){	.nav-links{display:none;}	}
+		/*	SECTION	SPACING	*/
+		section{position:relative;	z-index:1;	padding:72px	0;}
+		section.tight{padding:56px	0;}
+		.section-head{
+				display:grid;	grid-template-columns:auto	1fr;	align-items:baseline;	gap:16px;
+				margin-bottom:36px;	border-bottom:1px	solid	var(--line);	padding-bottom:18px;
+		}
+		.section-tag{font-family:var(--font-mono);	font-size:13px;	color:var(--accent);}
+		.section-title{font-family:var(--font-display);	font-size:28px;	font-weight:600;}
+		/*	HERO	*/
+		.hero{
+				padding-top:100px;	padding-bottom:64px;
+				display:grid;	grid-template-columns:1.3fr	0.9fr;	gap:48px;	align-items:start;
+		}
+		@media	(max-width:800px){	.hero{grid-template-columns:1fr;	padding-top:56px;}	}
+		.hero-eyebrow{
+				font-family:var(--font-mono);	font-size:13px;	color:var(--text-faint);
+				display:flex;	align-items:center;	gap:10px;	margin-bottom:24px;
+		}
+		.dot-live{width:7px;height:7px;border-radius:50%;background:var(--accent);
+				box-shadow:0	0	0	0	rgba(79,209,197,0.6);	animation:pulse	2.4s	infinite;}
+		@keyframes	pulse{
+				0%{box-shadow:0	0	0	0	rgba(79,209,197,0.5);}
+				70%{box-shadow:0	0	0	8px	rgba(79,209,197,0);}
+				100%{box-shadow:0	0	0	0	rgba(79,209,197,0);}
+		}
+		.hero	h1{
+				font-family:var(--font-display);	font-weight:700;
+				font-size:clamp(34px,	4.4vw,	52px);
+				line-height:1.08;	letter-spacing:-0.015em;
+				margin-bottom:18px;
+		}
+		.hero	h1	.line2{color:var(--text-dim);	font-weight:600;	display:block;	margin-top:2px;}
+		.hero	p.lede{
+				font-size:17px;	color:var(--text-dim);	max-width:52ch;	margin-bottom:32px;
+		}
+		.hero-cta{display:flex;	gap:14px;	flex-wrap:wrap;}
+		.btn{
+				font-family:var(--font-body);	font-size:14px;	font-weight:600;
+				padding:13px	22px;	border-radius:6px;	display:inline-flex;	align-items:center;	gap:8px;
+				transition:transform	.2s	ease,	background	.2s	ease,	border-color	.2s	ease;
+		}
+		.btn-primary{background:var(--accent);	color:#06201C;	border:1px	solid	var(--accent);}
+		.btn-primary:hover{transform:translateY(-2px);	background:#63dccf;}
+		.btn-ghost{border:1px	solid	var(--line);	color:var(--text);}
+		.btn-ghost:hover{border-color:var(--accent);	color:var(--accent);	transform:translateY(-2px);}
+		/*	profile	panel	*/
+		.hero-panel{
+				background:var(--bg-panel);	border:1px	solid	var(--line);	border-radius:12px;
+				padding:24px;	position:relative;	max-width:340px;	justify-self:end;	width:100%;
+				opacity:0;	transform:translateY(14px);
+				animation:rise	.7s	cubic-bezier(.2,.8,.2,1)	.15s	forwards;
+		}
+		@keyframes	rise{	to{opacity:1;	transform:translateY(0);}	}
+		.avatar{
+				width:100%;	aspect-ratio:1/1;	border-radius:8px;
+				background:
+						radial-gradient(circle	at	30%	20%,	rgba(79,209,197,0.25),	transparent	60%),
+						linear-gradient(160deg,	#16283a,	#0c1826);
+				border:1px	solid	var(--line);
+				display:flex;	align-items:center;	justify-content:center;
+				margin-bottom:18px;	overflow:hidden;
+				position:relative;
+		}
+		.avatar	svg{width:56%;	opacity:.85;}
+		.avatar	img{
+				width:100%;	height:100%;	object-fit:cover;	object-position:center	20%;
+				filter:grayscale(35%)	contrast(1.08)	brightness(0.95);
+		}
+		.avatar::after{
+				content:'';	position:absolute;	inset:0;
+				background:linear-gradient(180deg,	rgba(79,209,197,0.08)	0%,	rgba(11,20,32,0.35)	100%);
+				pointer-events:none;
+		}
+		.panel-name{font-family:var(--font-display);	font-size:19px;	font-weight:600;}
+		.panel-role{font-size:13px;	color:var(--text-dim);	margin-top:2px;	margin-bottom:16px;}
+		.panel-meta{font-family:var(--font-mono);	font-size:12.5px;	color:var(--text-faint);	display:flex;	flex-direction:column;	gap:6px;}
+		.panel-meta	span	b{color:var(--text-dim);	font-weight:500;}
+		/*	METRICS	STRIP	*/
+		.metrics{
+				display:grid;	grid-template-columns:repeat(4,1fr);	gap:1px;
+				background:var(--line);	border:1px	solid	var(--line);	border-radius:10px;	overflow:hidden;
+		}
+		@media	(max-width:700px){	.metrics{grid-template-columns:repeat(2,1fr);}	}
+		.metric{background:var(--bg-panel);	padding:24px	20px;}
+		.metric	.num{font-family:var(--font-display);	font-size:32px;	font-weight:700;	color:var(--accent);}
+		.metric	.lbl{font-size:12.5px;	color:var(--text-dim);	margin-top:6px;}
+		/*	ABOUT	*/
+		.about-grid{display:grid;	grid-template-columns:1.1fr	1fr;	gap:56px;}
+		@media	(max-width:800px){	.about-grid{grid-template-columns:1fr;}	}
+		.about-grid	p{color:var(--text-dim);	font-size:15.5px;	margin-bottom:16px;	max-width:60ch;}
+		.timeline{border-left:1px	solid	var(--line);	padding-left:24px;	display:flex;	flex-direction:column;	gap:28px;}
+		.timeline-item{position:relative;}
+		.timeline-item::before{
+				content:'';	position:absolute;	left:-29px;	top:4px;	width:9px;	height:9px;
+				border-radius:50%;	background:var(--bg);	border:2px	solid	var(--accent);
+		}
+		.timeline-item	h4{font-family:var(--font-display);	font-size:15.5px;	font-weight:600;}
+		.timeline-item	.meta{font-family:var(--font-mono);	font-size:12px;	color:var(--text-faint);	margin:4px	0	6px;}
+		.timeline-item	p{font-size:14px;	color:var(--text-dim);}
+		.badges{display:flex;	flex-wrap:wrap;	gap:10px;	margin-top:24px;}
+		.badge{
+				font-family:var(--font-mono);	font-size:12px;	color:var(--text-dim);
+				border:1px	solid	var(--line);	padding:7px	12px;	border-radius:6px;
+		}
+		/*	SKILLS	*/
+		.skills-grid{display:grid;	grid-template-columns:repeat(3,1fr);	gap:1px;	background:var(--line);	border:1px	solid	var(--line);	border-radius:10px;	overflow:hidden;}
+		@media	(max-width:800px){	.skills-grid{grid-template-columns:repeat(2,1fr);}	}
+		@media	(max-width:520px){	.skills-grid{grid-template-columns:1fr;}	}
+		.skill-card{background:var(--bg-panel);	padding:26px;}
+		.skill-card	h4{font-family:var(--font-mono);	font-size:12px;	letter-spacing:0.03em;	color:var(--accent);	margin-bottom:14px;}
+		.skill-card	ul{list-style:none;	display:flex;	flex-direction:column;	gap:9px;}
+		.skill-card	li{font-size:14px;	color:var(--text-dim);	display:flex;	align-items:center;	gap:8px;}
+		.skill-card	li::before{content:'';	width:5px;	height:5px;	background:var(--text-faint);	border-radius:50%;	flex-shrink:0;}
+		/*	SERVICES	*/
+		.services-grid{display:grid;	grid-template-columns:repeat(2,1fr);	gap:16px;}
+		@media	(max-width:700px){	.services-grid{grid-template-columns:1fr;}	}
+		.service-card{
+				border:1px	solid	var(--line);	border-radius:10px;	padding:26px;	background:var(--bg-panel);
+				transition:border-color	.25s	ease;
+		}
+		.service-card:hover{border-color:var(--accent);}
+		.service-idx{font-family:var(--font-mono);	font-size:12px;	color:var(--text-faint);	margin-bottom:10px;}
+		.service-card	h3{font-family:var(--font-display);	font-size:17px;	font-weight:600;	margin-bottom:8px;}
+		.service-card	p{font-size:14px;	color:var(--text-dim);}
+		/*	CLIENTELE	*/
+		.logo-strip{
+				display:grid;	grid-template-columns:repeat(5,1fr);	gap:1px;
+				background:var(--line);	border:1px	solid	var(--line);	border-radius:10px;	overflow:hidden;
+				margin-bottom:16px;
+		}
+		@media	(max-width:700px){	.logo-strip{grid-template-columns:repeat(2,1fr);}	}
+		.logo-cell{
+				background:var(--bg-panel);	padding:22px	16px;
+				display:flex;	align-items:center;	justify-content:center;
+				font-family:var(--font-mono);	font-size:13px;	color:var(--text-faint);
+				letter-spacing:0.02em;	transition:color	.2s;
+		}
+		.logo-cell:hover{color:var(--accent);}
+		.testimonial-grid{display:grid;	grid-template-columns:repeat(2,1fr);	gap:16px;}
+		@media	(max-width:700px){	.testimonial-grid{grid-template-columns:1fr;}	}
+		.testimonial-card{
+				border:1px	solid	var(--line);	border-radius:10px;	background:var(--bg-panel);	padding:26px;
+		}
+		.testimonial-card	p.quote{font-size:14.5px;	color:var(--text-dim);	margin-bottom:18px;}
+		.testimonial-who{display:flex;	align-items:center;	gap:12px;}
+		.testimonial-avatar{
+				width:36px;	height:36px;	border-radius:50%;	flex-shrink:0;
+				background:linear-gradient(160deg,#16283a,#0c1826);	border:1px	solid	var(--line);
+		}
+		.testimonial-name{font-size:13.5px;	font-weight:600;	color:var(--text);}
+		.testimonial-role{font-family:var(--font-mono);	font-size:11.5px;	color:var(--text-faint);}
+		/*	PROJECTS	*/
+		.project-card{
+				border:1px	solid	var(--line);	border-radius:10px;	background:var(--bg-panel);
+				padding:28px;	margin-bottom:16px;
+				display:grid;	grid-template-columns:auto	1fr;	gap:24px;
+		}
+		@media	(max-width:700px){	.project-card{grid-template-columns:1fr;}	}
+		.project-period{font-family:var(--font-mono);	font-size:12.5px;	color:var(--text-faint);	white-space:nowrap;}
+		.project-card	h3{font-family:var(--font-display);	font-size:18px;	font-weight:600;	margin-bottom:6px;}
+		.project-stack{display:flex;	flex-wrap:wrap;	gap:8px;	margin:12px	0;}
+		.stack-chip{font-family:var(--font-mono);	font-size:11.5px;	color:var(--accent);	background:var(--accent-soft);	padding:4px	9px;	border-radius:4px;}
+		.project-card	ul{list-style:none;	display:flex;	flex-direction:column;	gap:6px;}
+		.project-card	li{font-size:14px;	color:var(--text-dim);	padding-left:16px;	position:relative;}
+		.project-card	li::before{content:'→';	position:absolute;	left:0;	color:var(--text-faint);}
+		.project-link{display:inline-block;	margin-top:12px;	font-size:13px;	color:var(--accent);	border-bottom:1px	solid	transparent;}
+		.project-link:hover{border-color:var(--accent);}
+		/*	CONTACT	*/
+		.contact-grid{display:grid;	grid-template-columns:1fr	1.1fr;	gap:56px;}
+		@media	(max-width:800px){	.contact-grid{grid-template-columns:1fr;}	}
+		.contact-list{display:flex;	flex-direction:column;	gap:0;	border-top:1px	solid	var(--line);}
+		.contact-row{
+				display:flex;	align-items:center;	justify-content:space-between;
+				padding:18px	4px;	border-bottom:1px	solid	var(--line);
+				font-size:14.5px;
+		}
+		.contact-row	span:first-child{color:var(--text-faint);	font-family:var(--font-mono);	font-size:12.5px;}
+		.contact-row	a{color:var(--text);	transition:color	.2s;}
+		.contact-row	a:hover{color:var(--accent);}
+		form{display:flex;	flex-direction:column;	gap:14px;}
+		.field{display:flex;	flex-direction:column;	gap:6px;}
+		.field	label{font-family:var(--font-mono);	font-size:12px;	color:var(--text-faint);}
+		.field	input,	.field	textarea{
+				background:var(--bg-panel);	border:1px	solid	var(--line);	border-radius:6px;
+				padding:12px	14px;	color:var(--text);	font-family:var(--font-body);	font-size:14px;
+				transition:border-color	.2s;
+		}
+		.field	input:focus,	.field	textarea:focus{border-color:var(--accent);}
+		.field	textarea{resize:vertical;	min-height:100px;}
+		.submit-btn{
+				align-self:flex-start;	background:var(--accent);	color:#06201C;	border:none;
+				font-weight:600;	font-size:14px;	padding:13px	24px;	border-radius:6px;	cursor:pointer;
+				transition:transform	.2s,	background	.2s;
+				font-family:var(--font-body);
+		}
+		.submit-btn:hover{transform:translateY(-2px);	background:#63dccf;}
+		.submit-note{font-size:12.5px;	color:var(--text-faint);	margin-top:4px;}
+		footer{border-top:1px	solid	var(--line);	padding:32px	0;	text-align:center;}
+		footer	p{font-family:var(--font-mono);	font-size:12px;	color:var(--text-faint);}
+		/*	reveal	on	scroll	*/
+		.reveal{opacity:0;	transform:translateY(18px);	transition:opacity	.6s	ease,	transform	.6s	ease;}
+		.reveal.in{opacity:1;	transform:translateY(0);}
+</style>
+</head>
+<body>
+<div	class="grid-bg"></div>
+<nav>
+		<div	class="wrap">
+				<div	class="nav-mark">KR	/	data-analyst</div>
+				<div	class="nav-links">
+						<a	href="#about">About</a>
+						<a	href="#skills">Skills</a>
+						<a	href="#experience">Experience</a>
+						<a	href="#What I Deliver">What I Deliver</a>
+						<a	href="#Professional Testimonials">Professional Testimonials</a>
+						<a	href="#projects">Projects</a>
+						<a	href="#contact">Contact</a>
+				</div>
+		</div>
+</nav>
+<header	class="hero">
+		<div	class="wrap	hero">
+				<div>
+						<div	class="hero-eyebrow"><span	class="dot-live"></span>Available	—	Dubai,	UAE</div>
+						<h1>Karthikeyan	Rajkumar<br><span	class="line2">Data	Analyst,	Power	BI	&amp;	SQL</span></h1>
+						<p	class="lede">I’m a Data Analyst at Sobha Construction LLC, Dubai, specializing in Power BI, SQL, Excel, and Python. I turn complex data into clear, actionable insights through interactive dashboards and smart reporting solutions.
+</p>
+						<div	class="hero-cta">
+								<a	href="#projects"	class="btn	btn-primary">View	projects</a>
+								<a	href="#contact"	class="btn	btn-ghost">Get	in	touch</a>
+						</div>
+				</div>
+				<div	class="hero-panel">
+						<div	class="avatar">
+								<img	src="Profile image/Karthik_Profile.jpeg"	alt="Karthikeyan	Rajkumar">
+						</div>
+						<div	class="panel-name">Karthikeyan	Rajkumar</div>
+						<div	class="panel-role">Data	Analyst	·	BI	&amp;	Reporting</div>
+						<div	class="panel-meta">
+								<span><b>Location -</b>	&nbsp;Dubai,	UAE</span>
+								<span><b>Focus -</b>	&nbsp;Power	BI	·	SQL	 ·	DAX  ·	Power Query</span>
+								<span><b>Present -</b>	&nbsp;Sobha	Construction	LLC</span>
+						</div>
+				</div>
+		</div>
+</header>
+<section	class="tight">
+		<div	class="wrap	reveal">
+				<div	class="metrics">
+						<div	class="metric"><div	class="num"	data-count="30">0%</div><div	class="lbl">Faster	variation	reporting</div></div>
+						<div	class="metric"><div	class="num"	data-count="20">0%</div><div	class="lbl">Fewer	cash-recon	discrepancies</div></div>
+						<div	class="metric"><div	class="num"	data-count="5"	data-suffix="+">0</div><div	class="lbl">Active Construction Analytics Projects</div></div>
+						<div	class="metric"><div	class="num"	data-static="&lt;4h">3d	→	&lt;4h</div><div	class="lbl">Report	turnaround	time</div></div>
+				</div>
+		</div>
+</section>
+<section	id="about">
+		<div	class="wrap">
+				<div	class="section-head">
+						<h2	class="section-title">About</h2>
+				</div>
+				<div	class="about-grid">
+						<div	class="reveal">
+								<p>Data	Analyst	with	professional	experience	delivering	Power	BI	dashboards,	SQL-driven	reporting,	and	Excel/DAX	automation	for	construction and cost control	operations	at	Sobha	Construction	LLC,	
+Dubai.	Work	has	reduced	variation-reporting	time	by	30%,	cash-reconciliation	discrepancies	by	20%,	and	report	turnaround	from	days	to	hours	across	5+	active	sites.</p>
+								<p>Comfortable	across	the	full	reporting	stack	—	from	writing	SQL	to	source	and	clean	data,	through	Python	for	analysis,	to	shipping	stakeholder-facing	Power	BI	dashboards	that	
+commercial	and	operations	teams	actually	use.</p>
+								<div	class="badges">
+										<span	class="badge">14th	Intl.	Conf.	on	Science	&amp;	Innovative	Engineering (ICSIE 2024)</span>
+										<span	class="badge">Certificate	of	Excellence,	Python	Programming</span>
+										<span	class="badge">Web	Development	Workshop</span>
+										<span	class="badge">Certifications & Language Proficiency - DET	110/160</span>
+								</div>
+						</div>
+						<div	class="timeline	reveal">
+								<div	class="timeline-item">
+										<h4>B.Tech,	Information	Technology</h4>
+										<di	class="meta">SRM	Institute	of	Science	and	Technology,	Ramapuram,	Chennai	<div>	
+										<div>Aug	2020	–	Jul	2024</div>
+										<p>CGPA	8.73	/	10</p>
+								</div>
+								<div	class="timeline-item">
+										<h4>Higher	Secondary	Education</h4>
+										<div	class="meta">Brindhavan	Higher	Secondary	School,	Pattukkottai,	Thanjavur<div>	
+										<div>Jun	2014	–	May	2020</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</section>
+<section	id="skills">
+		<div	class="wrap">
+				<div	class="section-head">
+
+						<h2	class="section-title">Skills</h2>
+				</div>
+				<div	class="skills-grid	reveal">
+						<div	class="skill-card">
+								<h4>BI	&amp;	VISUALIZATION</h4>
+								<ul><li>Power	BI</li><li>DAX</li><li>Power	Query</li><li>Excel	(Advanced)</li></ul>
+						</div>
+						<div	class="skill-card">
+								<h4>SQL	&amp;	DATABASES</h4>
+								<ul><li>MySQL</li></ul>
+						</div>
+						<div	class="skill-card">
+								<h4>PROGRAMMING	&amp;	ANALYTICS</h4>
+								<ul><li>Python</li><li>Pandas	/	NumPy</li><li>Statistical	analysis</li><li>Data	cleaning	&amp;	transformation</li></ul>
+						</div>
+						<div	class="skill-card">
+								<h4>BUSINESS	&amp;	REPORTING</h4>
+								<ul><li>KPI	reporting</li><li>Reporting	automation</li><li>Cost	&amp;	budget	analysis</li><li>Stakeholder	management</li><li>Requirements	gathering</li></ul>
+						</div>
+						<div	class="skill-card">
+								<h4>CLOUD BASED DEVELOPMENT TOOL</h4>
+								<ul><li>Git</li><li>GitHub</li></ul>
+						</div>
+						<div	class="skill-card">
+								<h4>METHODOLOGIES & PROCESSES</h4>
+								<ul><li>Business Process Mapping</li><li>Data Storytelling</li><li>Workflow Optimization</li></ul>
+						</div>
+				</div>
+		</div>
+</section>
+<section	id="experience">
+		<div	class="wrap">
+				<div	class="section-head">
+
+						<h2	class="section-title">Experience</h2>
+				</div>
+				<div	class="reveal">
+						<div	class="project-card"	style="grid-template-columns:1fr;">
+								<div>
+										<div	style="display:flex;	justify-content:space-between;	flex-wrap:wrap;	gap:8px;	margin-bottom:4px;">
+												<h3>Data	Analyst	—	Sobha	Construction	LLC</h3>
+												<span	class="project-period">Jan	2026	–	Present	·	Dubai,	UAE</span>
+										</div>
+										<ul	style="margin-top:14px;">
+												<li>Variation Tracking & Efficiency: Designed and deployed a Power BI Variation Dashboard to track submitted, approved, pending, and rejected variations, cutting status reporting time by 30%.</li>
+												<li>Cost Forecasting & Precision: Built a Site Operations Expense Dashboard using Power BI and Excel, improving cost-forecasting accuracy across 5+ active construction site activities.</li>
+												<li>Financial Reconciliation & Accuracy: Engineered a real-time Petty Cash Dashboard in Power BI with Excel	-sourced expense categorization, reducing cash-reconciliation discrepancies by 20%.</li>
+												<li>Report Turnaround & Stakeholder Delivery: Translated complex stakeholder requirements into interactive Power BI and DAX reports for commercial and operations teams, shortening report turnaround time from 3 days to under 4 hours.</li>
+										</ul>
+								</div>
+						</div>
+				</div>
+		</div>
+</section>
+<section	id="What I Deliver">
+		<div	class="wrap">
+				<div	class="section-head">
+
+						<h2	class="section-title">What I Deliver</h2>
+				</div>
+				<div	class="services-grid	reveal">
+						<div	class="service-card">
+	
+								<h3>Power BI Dashboard Development</h3>
+
+								<p>End-to-end Interactive Power BI dashboards for project performance, cost tracking, productivity, and management reporting.</p>
+						</div>
+						<div	class="service-card">
+
+								<h3>SQL Data Analysis & Reporting</h3>
+								<p>Real-time,	SQL-based data analysis and reporting to transform raw business data into accurate, actionable insights.</p>
+						</div>
+						<div	class="service-card">
+
+								<h3>Excel & Reporting Automation</h3>
+								<p>Automating Excel, DAX, and Power Query workflows to reduce manual work and improve reporting efficiency.</p>
+						</div>
+						<div	class="service-card">
+								<!-- <div	class="service-idx">SVC	—	04</div> -->
+								<h3>Business Intelligence & Analytics</h3>
+								<p>Turning business requirements into clear dashboards and data-driven solutions that support better decision-making.</p>
+						</div>
+				</div>
+		</div>
+</section>
+<section	id="Professional Testimonials">
+		<div	class="wrap">
+				<div	class="section-head">
+
+						<h2	class="section-title">Professional Testimonials</h2>
+				</div>
+				<div	class="reveal">
+						<div	class="logo-strip"	style="grid-template-columns:1fr;">
+								<div	class="logo-cell"	style="padding:32px	20px;	font-size:15px;">Sobha	Construction	LLC</div>
+						</div>
+						<div	class="testimonial-grid"	style="grid-template-columns:1fr;">
+								<div	class="testimonial-card">
+										<p	class="quote">Karthikeyan has transformed how our team consumes operational data. By replacing sluggish, manual workflows with automated Power BI dashboards, he cut our reporting turnaround from three days to under four hours. His ability to take complex requirements and deliver crisp, interactive visual insights gives leadership complete confidence during critical commercial evaluations</p>
+										<div	class="testimonial-who">
+												<div	class="testimonial-avatar"></div>
+
+												<div><div	class="testimonial-name">Sankareswaran Poovalingam</div><div	class="testimonial-role">Deputy Manager - Commercial, Sobha	Construction	LLC</div></div>
+										</div>
+								</div>
+								<div	class="testimonial-card">
+										<p	class="quote">Karthikeyan’s technical expertise significantly streamlined our variation management across active projects. He designed an intuitive Power BI Variation Dashboard that brought clear visibility to submitted and pending claims, accelerating our overall variation-reporting efficiency by 30%</p>
+										<div	class="testimonial-who">
+												<div	class="testimonial-avatar"></div>
+
+												<div><div	class="testimonial-name">Jenish Chrirstian Babu</div><div	class="testimonial-role">QS - Commercial, Sobha	Construction	LLC</div></div>
+										</div>
+								</div>
+								<div	class="testimonial-card">
+										<p	class="quote">Working with Karthikeyan made our daily commercial work so much easier. His automated Petty Cash Dashboard fixed our reporting errors and saved us hours of daily Excel work</p>
+										<div	class="testimonial-who">
+												<div	class="testimonial-avatar"></div>
+
+												<div><div	class="testimonial-name">Dhiyaneshwaran</div><div	class="testimonial-role">Jr.QS - Commercial, Sobha	Construction	LLC</div></div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</section>
+<section	id="projects">
+		<div	class="wrap">
+				<div	class="section-head">
+
+						<h2	class="section-title">Projects</h2>
+				</div>
+				<div	class="reveal">
+						<div	class="project-card">
+							
+								<span	class="project-period">Mar 2026</span>
+								<div>
+										<h3>AI-Powered	Document	QA	System	(RAG	Chatbot)</h3>
+										<div	class="project-stack">
+												<span	class="stack-chip">Python</span><span	class="stack-chip">Deployed on Streamlit</span>
+										</div>
+										<ul>
+												<li>Cut	manual	document	search	time	50%	by	building	a	retrieval-augmented	generation	chatbot	for	natural-language	search	across	multi-page	PDFs.</li>
+												<li>Improved	retrieval	accuracy	25%	by	designing	a	text-chunking	pipeline	converting	unstructured	text	into	searchable	vector	embeddings	with	sentence-transformers.</li>
+												<li>Refined	feature	extraction	for	more	reliable	model	performance	in	collaboration	with	a	cross-functional	team	on	evaluation.</li>
+										</ul>
+										<a	href="https://ragchatbox.streamlit.app/"	class="project-link">View	live	demo	→</a>
+								</div>
+						</div>
+						<div	class="project-card">
+								<span	class="project-period">May 2024</span>
+								<div>
+										<h3>Priority	Reminder	Web	Application</h3>
+										<div	class="project-stack">
+												<span	class="stack-chip">AI-Assisted	Dev</span><span	class="stack-chip">Deployed on Netlify</span>
+										</div>
+										<ul>
+												<li>Improved	task	organization	for	end	users	by	building	and	deploying	a	task	management	web	app	with	Personal,	Work,	and	High-Priority	categories.</li>
+												<li>Increased	real-time	visibility	into	pending	vs.	completed	tasks	via	task	creation,	completion	tracking,	and	dynamic	counters.</li>
+												<li>Reduced	development	time	40%	versus	traditional	workflows	by	leveraging	AI-assisted	development	tools	for	coding	and	debugging.</li>
+										</ul>
+										<a	href="https://guileless-boba-60bc5b.netlify.app/"	class="project-link">View	live	demo	→</a>
+								</div>
+						</div>
+						
+				</div>
+		</div>
+</section>
+<section	id="contact">
+		<div	class="wrap">
+				<div	class="section-head">
+
+						<h2	class="section-title">Contact</h2>
+				</div>
+				<div	class="contact-grid	reveal">
+						<div>
+								<p	style="color:var(--text-dim);	font-size:15px;	margin-bottom:24px;	max-width:42ch;">Open	to	Data	Analyst	and	BI	roles,	freelance	dashboard	builds,	and	reporting	automation	projects.	
+Reach	out	directly	or	send	a	message.</p>
+								<div	class="contact-list">
+										<div	class="contact-row"><span>EMAIL</span><a	href="mailto:karthikeyanrajkumar3@gmail.com">karthikeyanrajkumar3@gmail.com</a></div>
+										<div	class="contact-row"><span>PHONE</span><a	href="tel:+971543063891">+971	54	306	3891</a></div>
+										<div	class="contact-row"><span>LINKEDIN</span><a	href="https://www.linkedin.com/in/karthikeyananalyst"	target="_blank"	rel="noopener">linkedin.com/in/karthikeyan</a></div>
+										<div	class="contact-row"><span>GITHUB</span><a	href="https://github.com/karthikeyan060"	target="_blank"	rel="noopener">github.com/karthikeyan</a></div>
+										<div	class="contact-row"><span>LOCATION</span><span>Dubai,	UAE</span></div>
+								</div>
+						</div>
+						<form	id="contactForm"	action="https://formspree.io/f/mgaengvz"	method="POST">
+								<div	class="field">
+										<label	for="name">Name</label>
+										<input	id="name"	name="name"	type="text"	required	placeholder="Your  name">
+								</div>
+								<div	class="field">
+										<label	for="email">Email</label>
+										<input	id="email"	name="email"	type="email"	required	placeholder="you@gmail.com">
+								</div>
+								<div	class="field">
+										<label	for="message">Message</label>
+										<textarea	id="message"	name="message"	required	placeholder="Your Requirements"></textarea>
+								</div>
+								<button	type="submit"	class="submit-btn">Send	message</button>
+								<p	class="submit-note"	id="formNote">I	usually	reply	within	a	day.</p>
+						</form>
+						<script>
+								const	contactForm	=	document.getElementById('contactForm');
+								const	formNote	=	document.getElementById('formNote');
+								contactForm.addEventListener('submit',	async	function(e){
+										e.preventDefault();
+										formNote.textContent	=	'Sending…';
+										try{
+												const	res	=	await	fetch(contactForm.action,	{
+														method:	'POST',
+														body:	new	FormData(contactForm),
+														headers:	{	'Accept':	'application/json'	}
+												});
+												if(res.ok){
+														contactForm.reset();
+														formNote.textContent	=	"Message	sent	—	thanks,	I'll	reply	soon.";
+												}	else	{
+														formNote.textContent	=	"Couldn't	send	—	please	email	me	directly	instead.";
+												}
+										}	catch(err){
+												formNote.textContent	=	"Couldn't	send	—	please	email	me	directly	instead.";
+										}
+								});
+						</script>
+				</div>
+		</div>
+</section>
+<footer>
+		<div	class="wrap">
+				<p>©	2026	Karthikeyan	Rajkumar	—	Built	with	Power	BI-grade	attention	to	detail.</p>
+		</div>
+</footer>
+<script>
+		//	scroll	reveal
+		const	revealEls	=	document.querySelectorAll('.reveal');
+		const	io	=	new	IntersectionObserver((entries)=>{
+				entries.forEach(e=>{
+						if(e.isIntersecting){	e.target.classList.add('in');	io.unobserve(e.target);	}
+				});
+		},	{threshold:0.15});
+		revealEls.forEach(el=>io.observe(el));
+		//	animated	counters
+		const	counters	=	document.querySelectorAll('[data-count]');
+		const	counterIO	=	new	IntersectionObserver((entries)=>{
+				entries.forEach(entry=>{
+						if(entry.isIntersecting){
+								const	el	=	entry.target;
+								const	target	=	parseInt(el.getAttribute('data-count'),	10);
+								const	suffix	=	el.getAttribute('data-suffix')	||	'%';
+								let	cur	=	0;
+								const	step	=	Math.max(1,	Math.round(target/40));
+								const	tick	=	()=>{
+										cur	+=	step;
+										if(cur	>=	target){	el.textContent	=	target	+	suffix;	return;	}
+										el.textContent	=	cur	+	suffix;
+										requestAnimationFrame(tick);
+								};
+								tick();
+								counterIO.unobserve(el);
+						}
+				});
+		},	{threshold:0.5});
+		counters.forEach(el=>counterIO.observe(el));
+</script>
+</body>	
+</html
